@@ -1,0 +1,32 @@
+<html>
+	<head>
+	        	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	 </head>
+	  <body>
+	  	■alertの動作<br>
+	  	<input type="button" value="クリック！" onclick="alert('ボタンがクリックされました。')">
+	  	<br /><br>
+
+	  	■マウスオーバー／マウスアウト<br>
+	  	<input type="button" value="ボタン"onmouseover="this.value='マウスオーバー'" onmouseout="this.value='マウスアウト'">
+	  	<br /><br>
+
+	  	■マウスダウン／マウスアップ<br>
+	  	<input type="button" value="ボタン" onmousedown="this.value='マウスダウン'" onmouseup="this.value='マウスアップ'">
+	  	<br /><br>
+
+	  	■リンクキャンセル(イベントキャンセル)　※return false<br>
+	  	<a href="http://www.google.com/" onclick="return false">リンクできない</a>
+	  	<br /><br>
+
+	  	■コピペ禁止<br>
+	  	メールアドレス：<input type="text" oncopy="alert('コピー禁止！'); return false"
+      oncut="alert('カットも禁止！'); return false">
+      		<br>
+    メールアドレス（確認用）：<input type="text" onpaste="alert('ペースト禁止！'); return false">
+	  	<br /><br>
+
+	  	■マウスオーバーで画像切り替え<br>
+	  	<img src="./image/Titanic.jpg" onmouseover="this.src='./image/Classic.jpg'" onMouseOut="this.src='./image/Titanic.jpg'">
+	  </body>
+</html>
