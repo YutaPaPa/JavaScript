@@ -1,37 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Japan car import and Japanese used car exports [ tradecarview ]</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	</head>
-
-    <body>
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+    <meta charset="utf-8">
+    <title>template</title>
+</head>
+<body>
 	<p>
 		(関数)名前を入力して下さい：<input type="text" size="20" maxlength="20" id="name1">
 		<input type="submit" value="送信する" onclick="getText(name1)">
 	</p>
 
+<!-- 	<p>
+		(無名関数)名前を入力して下さい：<input type="text" size="20" maxlength="20" id="name2">
+		<input type="submit" value="送信する" onclick="getText(name2)">
+	</p> -->
+
 	<input type="button" id="button">
 
-	<script type="text/javascript">
-		var teiHen = 20;
-		var height = 10;
-		var result = (teiHen * height) / 2;
-		alert("三角形の面積は：" + result + "です");
-
-		var a = 8;    // 数値変数
-		var b = "9";    // 文字列変数
-		var c = "先頭" + (10 + 20 + a + b * 1) + "末尾";    // 文字列の連結
-		var d = "先頭" + (10 + 20 + a + b) + "末尾";    // 文字列の連結
-
-		// document.writelnを使用するときは、表示上改行を有効にするためにpre要素を使用すること
-		document.write("<pre>");
-		document.writeln("文字列の連結結果(数値変換あり)：" + c);
-		// 文字列を数値変換するためには文字列に0や1をかける
-		document.writeln("文字列の連結結果(数値変換なし)：" + d);
-		document.write("</pre>");
-
+	<script typ="text/javascript">
     		console.log("Hello World");
 
 		var flg = 1;
@@ -73,5 +59,5 @@
 		var text  = document.createTextNode("この文章の前後に自動でpタグを付与");
 		document.body.appendChild(hello).appendChild(text);
 	</script>
-    </body>
+</body>
 </html>
