@@ -7,71 +7,116 @@
 	</head>
 
     <body>
-	<p>
-		(関数)名前を入力して下さい：<input type="text" size="20" maxlength="20" id="name1">
-		<input type="submit" value="送信する" onclick="getText(name1)">
-	</p>
+    	※答えは全てログに出力されている<br>
+	<br>
 
-	<input type="button" id="button">
+    	■三角形の面積算出■<br>
+	底辺：<input type="text" id="teiHen" size="5"><br>
+	高さ：<input type="text" id="takasa" size="5">
+	<input type="button" value="計算する" onclick="Triangle(teiHen, takasa)">
+
+	<br><br>
+
+    	■入力された名前を表示■<br>
+	名前を入力して下さい：<input type="text" size="5" id="name1" style="ime-mode: active;">
+	<input type="button" value="表示する" onclick="NameHyoji(name1)">
+
+	<br><br>
+
+    	■足し算■<br>
+	数値1：<input type="text" id="num1" size="5" style="ime-mode: disabled;"><br>
+	数値2：<input type="text" id="num2" size="5" style="ime-mode: disabled;">
+	<input type="button"  value="足し算" onclick="Plus(num1, num2)">
+
+	<br><br>
+
+    	■画面サイズ■<br>
+	<input type="button"  value="画面サイズ表示" onclick="WindowSize()">
+
+	<br><br>
+
+    	■要素の変更■<br>
+	<input type="button"  value="このボタンを押すと・・・" id = "youso" onclick="ChangeButtonName()">
+
+	<br><br>
+
+    	■配列■<br>
+	数値1：<input type="text" id="array1" size="5" style="ime-mode: active;"><br>
+	数値2：<input type="text" id="array2" size="5" style="ime-mode: active;"><br>
+	数値3：<input type="text" id="array3" size="5" style="ime-mode: active;">
+	<input type="button"  value="配列の中身表示" onclick="Array(array1, array2, array3)">
 
 	<script type="text/javascript">
-		var teiHen = 20;
-		var height = 10;
-		var result = (teiHen * height) / 2;
-		alert("三角形の面積は：" + result + "です");
+		function Triangle(teiHen, takasa){
+			if (teiHen.value == "" || takasa.value == "")
+			{
+				alert("底辺または高さのどちらかが未入力です");
+				return;
+			}
+			console.log("三角形の面積は：" + (teiHen.value * takasa.value / 2) + "です");
+		}
 
-		var a = 8;    // 数値変数
-		var b = "9";    // 文字列変数
-		var c = "先頭" + (10 + 20 + a + b * 1) + "末尾";    // 文字列の連結
-		var d = "先頭" + (10 + 20 + a + b) + "末尾";    // 文字列の連結
-
-		// document.writelnを使用するときは、表示上改行を有効にするためにpre要素を使用すること
-		document.write("<pre>");
-		document.writeln("文字列の連結結果(数値変換あり)：" + c);
-		// 文字列を数値変換するためには文字列に0や1をかける
-		document.writeln("文字列の連結結果(数値変換なし)：" + d);
-		document.write("</pre>");
-
-    		console.log("Hello World");
-
-		var flg = 1;
-		switch(flg) {
-			case 1:
-				console.log('flgは1');
-				break;
-			case 2:
-				console.log('flgは2');
-				default:
-			console.log('デフォルトで実行');
-				break;
-    		}
-
-		var names = ["taro", "jiro", "saburo"];
-		console.log(names);
-		console.log(names[0]);
-
-		function getText(name){
-		    console.log('■関数■(第一引数 name に定型文を付与して返却します)');
-		    console.log('学生代表の' + name.value + 'です！');
+		function NameHyoji(name){
+			if (name.value == "" || name.value == null)
+			{
+				alert("名前が未入力です");
+				return;
+			}
+		    	console.log("入力された名前は「" + name.value + "」です。");
 		};
 
-		// var getText = function(name){
-		//     console.log('■無名関数■(第一引数 name に定型文を付与して返却します)');
-		//     console.log('学生代表の' + name.value + 'です！');
-		// };
+		function Plus(num1, num2)
+		{
+			if (num1.value == "" || num1.value == null || num2.value == "" || num2.value == null)
+			{
+				alert("数値1または数値2のどちらかが未入力です");
+				return;
+			}
 
-		// window オブジェクトの取得
-		console.log('縦:' + window.outerHeight);
-		console.log('横:' + window.outerWidth);
+			var setNum1 = Number(num1.value);
+			var setNum2 = Number(num2.value);
+			var total = setNum1 + setNum2;
+			console.log(setNum1 + "+" + setNum2 + "=" + total);
+		}
 
-		// 要素の取得
-		var button = document.getElementById("button");
-		button.value = 'クリックしたよ';
+		function WindowSize(){
+			console.log('縦：' + window.outerHeight);
+			console.log('横：' + window.outerWidth);
+		}
+
+		function ChangeButtonName(){
+			var button = document.getElementById("youso");
+			button.value = '変わったでしょ！！';
+		}
+
+		function Array(array1, array2, array3){
+			if (array1.value == "" || array1.value == null || array2.value == "" || array2.value == null  || array3.value == "" || array3.value == null)
+			{
+				alert("数値1、数値2、数値3のどれかが未入力です");
+				return;
+			}
+
+			var array = [array1.value, array2.value, array3.value];
+
+			var data = "";
+			for (i = 0; i < array.length; i++){
+				data = data + array[i] + ", ";
+				if (i == array.length - 1){
+					data = data.substring(0, data.lastIndexOf(", "));
+				}
+			}
+			console.log("配列の中身：" + data);
+			console.log("配列の2番目の中身：" + array[1]);
+		}
+
 
 		// 要素の作成
 		var hello = document.createElement("p");
 		var text  = document.createTextNode("この文章の前後に自動でpタグを付与");
 		document.body.appendChild(hello).appendChild(text);
+
+
+
 	</script>
     </body>
 </html>
