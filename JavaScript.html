@@ -46,6 +46,46 @@
 	数値3：<input type="text" id="array3" size="5" style="ime-mode: active;">
 	<input type="button"  value="配列の中身表示" onclick="Array(array1, array2, array3)">
 
+	<br><br>
+
+    	■DOMの操作(getElementsByTagName)■<br>
+	<div>1個目のdivタグです</div>
+	<div>2個目のdivタグです</div>
+	<div>3個目のdivタグです</div>
+	<input type="button"  value="ボタン押下でdiv内の文字列変更" onclick="ChangeDiv()">
+
+	<br><br>
+
+    	■DOMの操作(getElementsById)■<br>
+	<div id="main">
+  		<div id="main_text">メインのdivタグです</div>
+	</div>
+	<div id="sub">
+  		<div id="sub_text">サブのdivタグです</div>
+	</div>
+	<input type="button"  value="ボタン押下でメイン側の文字列取得" onclick="GetDivText()">
+
+	<br><br>
+
+    	■DOMの操作(createTextNode)■<br>
+	ボタン押下で下部のDivタグ内に文字を表示↓↓
+	<div id="info"></div>
+	<input type="button"  value="文字を表示" onclick="AddTextNode()">
+
+	<br><br>
+
+    	■DOMの操作(createElement)■<br>
+	ボタン押下で下部のDivタグ内にタグを追加し文字を表示↓↓
+	<div id="info2"></div>
+	<input type="button"  value="タグを追加し文字を表示" onclick="AddElementNode()">
+
+	<br><br>
+
+    	■DOMの操作(insertBefore)■<br>
+	ボタン押下でDOMとHTML文字の間にCSSという文字を追加↓↓
+	<div id="title1">DOM</div><div id="title3">HTML</div>
+	<input type="button"  value="DOMとHTMLの間にCSSという文字を追加" onclick="InsertBefore()">
+
 	<script type="text/javascript">
 		function Triangle(teiHen, takasa){
 			if (teiHen.value == "" || takasa.value == "")
@@ -109,14 +149,55 @@
 			console.log("配列の2番目の中身：" + array[1]);
 		}
 
+		function ChangeDiv(){
+			var dt=document.getElementsByTagName("div");
+			for(var i=0; i<dt.length; i++){
+				dt[i].firstChild.nodeValue="ここが書き換わりました";
+			}
+		}
 
-		// 要素の作成
-		var hello = document.createElement("p");
-		var text  = document.createTextNode("この文章の前後に自動でpタグを付与");
-		document.body.appendChild(hello).appendChild(text);
+		function GetDivText(){
+			alert(document.getElementById("main_text").firstChild.nodeValue);
+		}
 
+		function AddTextNode(){
+			 /*（1）Pタグの要素ノードオブジェクト*/
+　 			var info = document.getElementById('info');
+			/*（2）新たにテキストノードを作成する*/
+			var textNode = document.createTextNode('この文字が表示されているはず・・・');
+			/*（3）作成したテキストノードをPタグ要素の子要素として追加する*/
+			info.appendChild(textNode);
+		}
 
+		function AddElementNode(){
+			/*（1）Pタグの要素ノードオブジェクト*/
+			var info = document.getElementById('info2');
+			/*（2）新たにH1タグの要素ノードを作成する*/
+			var h1Node = document.createElement('h1');
+			/*（3）新たにテキストノードを作成する*/
+			var textNode = document.createTextNode('この文字が表示されているはず・・・');
+			/*（4）作成したテキストノードをH1タグ要素の子要素として追加する*/
+			h1Node.appendChild(textNode);
+			/*（1）Pタグに、完成したH1タグを追加する*/
+			info.appendChild(h1Node);
+		}
 
+		function InsertBefore(){
+			/*（1）BODYタグの要素ノードオブジェクト*/
+			//var bodyNode = document.getElementsByTagName('body').item(0);
+			/*（2）title3のDIVタグの要素ノードオブジェクト*/
+			var title3Node = document.getElementById('title3');
+			/*（3）新たにDIVタグの要素ノードを作成する*/
+			var newNode = document.createElement('div');
+			/*（4）新たにテキストノードを作成する*/
+			var textNode = document.createTextNode('CSS');
+			/*（1）作成したテキストノードをDIVタグ要素の子要素として追加する*/
+			newNode.appendChild(textNode);
+			/*（6）新たに作成したDIVタグ要素にid属性をセット*/
+			newNode.id = 'title2';
+			/*（7）title3のDIVタグ要素の直前に、完成したDIVタグを追加する*/
+			title3Node.parentNode.insertBefore(newNode, title3Node);
+		}
 	</script>
     </body>
 </html>
