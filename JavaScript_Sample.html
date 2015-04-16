@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Japan car import and Japanese used car exports [ tradecarview ]</title>
+		<title>JavaScript Sample1</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 
@@ -85,6 +85,28 @@
 	ボタン押下でDOMとHTML文字の間にCSSという文字を追加↓↓
 	<div id="title1">DOM</div><div id="title3">HTML</div>
 	<input type="button"  value="DOMとHTMLの間にCSSという文字を追加" onclick="InsertBefore()">
+
+	<br><br>
+
+    	■DOMの操作(removeChild)■<br>
+	ボタン押下でDOMとHTML文字の間のCSSという文字を削除↓↓
+	<div id="toc">
+		<div id="chapter1">DOM</div>
+		<div id="chapter2">CSS</div>
+		<div id="chapter3">HTML</div>
+	</div>
+	<input type="button"  value="DOMとHTMLの間のCSSという文字を削除" onclick="RemoveChild()">
+
+	<br><br>
+
+    	■DOMの操作(replaceChild)■<br>
+	ボタン押下でHTML文字を新たな要素で置き換える↓↓
+	<div id="toc2">
+		<div id="toc2_chapter1">DOM</div>
+		<div id="toc2_chapter2">CSS</div>
+		<div id="toc2_chapter3">HTML</div>
+	</div>
+	<input type="button"  value="HTML文字を新たな要素で置き換える" onclick="ReplaceChild()">
 
 	<script type="text/javascript">
 		function Triangle(teiHen, takasa){
@@ -197,6 +219,25 @@
 			newNode.id = 'title2';
 			/*（7）title3のDIVタグ要素の直前に、完成したDIVタグを追加する*/
 			title3Node.parentNode.insertBefore(newNode, title3Node);
+		}
+
+		function RemoveChild(){
+			/*（1）chapter2のDIVタグの要素ノードオブジェクト*/
+　 			var targetNode = document.getElementById('chapter2');
+　 			/*（2）chapter2のDIVタグ要素を削除*/
+　 			targetNode.parentNode.removeChild(targetNode);
+		}
+
+		function ReplaceChild() {
+			/*（1）chapter3のDIVタグ要素のノードオブジェクト*/
+			var targetNode = document.getElementById('toc2_chapter3');
+			/*（2）新たなDIVタグを作成*/
+			var newNode = document.createElement('div');
+			var textNode = document.createTextNode('付録A');
+			newNode.appendChild(textNode);
+			newNode.id = 'appendixa';
+			/*（3）chapter3のDIVタグを置き換える*/
+			targetNode.parentNode.replaceChild(newNode, targetNode);
 		}
 	</script>
     </body>

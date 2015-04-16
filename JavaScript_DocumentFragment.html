@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>JavaScript DocumentFragment</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+	<div id="frame" style="width:300px; color:white;"></div>
+
+	<script type="text/javascript">
+		/*DIVタグのノードオブジェクト*/
+		var frameNode = document.getElementById('frame');
+
+		/*DocumentFragmentを新たに生成*/
+　 		var flgmntNode = document.createDocumentFragment();
+
+		/*10回の繰り返し*/
+		for(var i=1; i<=10; i++) {
+			/*DIVタグ要素を新たに生成*/
+			var newDivNode = document.createElement('div');
+
+			/*新たに生成したDIVタグ要素にスタイルを適用*/
+			newDivNode.style.width = '100%';
+			newDivNode.style.borderBottom = '1px solid #000000';
+			newDivNode.style.backgroundColor = 'rgb(0,' + (i*10+100).toString() + ',0)';
+
+			/*新たに生成したDIVタグ要素のテキストノードを追加*/
+			newDivNode.appendChild( document.createTextNode(i.toString()) );
+
+			/*frameNodeに、新たに生成したDIVタグ要素を追加*/
+　　 			flgmntNode.appendChild(newDivNode);
+
+			/*frameNodeに、新たに生成したDIVタグ要素を追加*/
+			//frameNode.appendChild(newDivNode);
+		}
+
+		/*DocumentFragmentをframeNodeに追加*/
+　 		frameNode.appendChild(flgmntNode);
+	</script>
+    </body>
+</html>

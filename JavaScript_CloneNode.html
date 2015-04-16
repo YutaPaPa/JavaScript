@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>JavaScript_CloneNode</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+	<!-- コンテンツを挿入したい場所-->
+	<div id="contents"></div>
+
+	<!-- 表示ボタン-->
+	<input type="button" name="dispBtn" id="dispBtn" value="表示" onclick="dispContents()" />
+
+	<!-- ひな型となるHTMLタグ-->
+	<div id="tmpl" class="box" style="display:none"></div>
+
+	<!-- ひな型のスタイル-->
+	<style type="text/css">
+		.box {
+			border: 1px solid #4c4c4c;
+			background-color: #F0F0E8;
+			margin: 10px;
+			padding: 10px;
+			width: 270px;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+		/*コンテンツとして表示させたい内容のテキスト*/
+		var textArray = new Array();
+		textArray[0] = 'コンテンツ0。コンテンツ0。コンテンツ0。';
+		textArray[1] = 'コンテンツ1。コンテンツ1。コンテンツ1。';
+		textArray[2] = 'コンテンツ2。コンテンツ2。コンテンツ2。';
+
+		/*コンテンツ表示フラグ*/
+		var displayFlag = false;
+
+		/*コンテンツ表示用関数*/
+		function dispContents() {
+			/*コンテンツ表示フラグをチェック*/
+			/*もし表示されていれば終了*/
+			if(displayFlag == true) { return; }
+
+			/*コンテンツを表示させたい領域のタグ要素ノードオブジェクト*/
+			var contentsNode = document.getElementById('contents');
+
+			/*ひな型となるHTMLタグの要素ノードオブジェクト*/
+			var tmplNode = document.getElementById('tmpl');
+
+			/**/
+			for(var i=0; i<textArray.length; i++) {
+				/*ひな型の要素ノードオブジェクトを複製*/
+				var newNode = tmplNode.cloneNode(true);
+
+				/*スタイルを変更し可視化する*/
+				newNode.style.display = '';
+
+				/*id属性値を変更*/
+				newNode.id = 'box' + i;
+
+				/*コンテンツを挿入*/
+				newNode.appendChild( document.createTextNode(textArray[i]) );
+
+				/*新ノードを追加*/
+				contentsNode.appendChild(newNode);
+			}
+
+			/*表示ボタンを無効化*/
+			document.getElementById('dispBtn').disabled = true;
+
+			/*表示フラグをtrueにセット*/
+			displayFlag = true;
+		}
+	</script>
+    </body>
+</html>
