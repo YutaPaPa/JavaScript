@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>JavaScriptの高階関数と匿名関数</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+	<div id="frame" style="width:300px; color:white;"></div>
+
+	<script type="text/javascript">
+		function arrayReduce(ary, func) {
+			var result = ary[0];
+
+			for (i = 1; i < ary.length; i++) {
+				result = func(result, ary[i]);
+			}
+
+			return result;
+		}
+
+		var myAry = [5, 3, 4, 7];
+
+		var result = arrayReduce(myAry, function(x, y) { return x + y; });
+
+		window.alert(result); // 「19」を表示
+
+		function format(fmt) {
+			for (i = 1; i < arguments.length; i++) {
+				var reg = new RegExp("\\{" + (i - 1) + "\\}", "g");
+				fmt = fmt.replace(reg,arguments[i]);
+			}
+
+			return fmt;
+		}
+
+		var dat = new Date();
+
+		window.alert(
+			format("今日は{0}年{1}月{2}日です",
+			dat.getFullYear(), dat.getMonth() + 1, dat.getDate())
+		); // （例えば）「2007年7月5日
+	</script>
+    </body>
+</html>
