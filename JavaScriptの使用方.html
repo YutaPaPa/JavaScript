@@ -50,15 +50,15 @@ Lesson01: JavaScriptを書く場所
 Lesson02: コメントの書き方
   プログラムの動作に影響しないメモ書きを『コメント』といいます。
   コメントを書くには、は行頭にスラッシュ2個(//)をつけます。
-  スラッシュ(/)とアスタリスク(*)で囲むと複数行のコメントを書くことも出来ます。  
+  スラッシュ(/)とアスタリスク(*)で囲むと複数行のコメントを書くことも出来ます。
 
 // Example:
     // ここはコメントになります
-    /* 
+    /*
         ココは
         複数行の
         コメントになります
-    */ 
+    */
 /*
 
 
@@ -78,10 +78,10 @@ Lesson04: 変数
     var name; // nameの部分は好きな名前でOK
 
 // Example: 変数宣言の方法 (宣言と同時に代入)
-    var name = 'すくーにゃ'; 
-    
+    var name = 'すくーにゃ';
+
 // Example: 変数宣言の方法③ (複数同時に宣言)
-    var name = 'すくーにゃ', var work = 'schoo'; 
+    var name = 'すくーにゃ', var work = 'schoo';
 
 
 Lesson05: データ型
@@ -89,10 +89,10 @@ Lesson05: データ型
     - 数値         ... 10, -100, 0.53 等
     - 文字列       ... "hoge", 'foo', "bar" 等
     - 真偽値       ... true / false
-    - undefined   ... 未定義 
+    - undefined   ... 未定義
     - null        ... 何も無い
     - オブジェクト  ... 上記以外の型。関数、配列 など
-    
+
 
 Lesson06: 算術演算子
   JavaScriptで数値を演算する際に用います
@@ -111,7 +111,7 @@ Lesson07: 結合演算子
 
 // Example:
     var name = "すくーにゃ";
-    console.log(name + "大好き"); 
+    console.log(name + "大好き");
 
 
 Lesson08: 条件分岐 (if文)
@@ -160,7 +160,7 @@ Lesson10: 条件分岐 (条件演算子(=三項演算子))
 // Example:
     // 値の初期化
     var a = 0, b = 1, c = 2;
-    
+
     // 条件演算子の使用例
     a = (a != b) ? b : c;
 
@@ -191,7 +191,7 @@ Lesson11: 条件分岐 (switch)
 
 Lesson12: 配列
   順序を持つ複数のデータの集合です。
-  
+
 // Example:
     var names = ["taro", "jiro", "saburo"];
     console.log(names);
@@ -209,7 +209,7 @@ Lesson13: 繰り返し処理 (while)
     while(i <= 10) {
         console.log("ok");
         i++
-    }  
+    }
 
 
 Lesson14: 繰り返し処理 (do while)
@@ -308,11 +308,11 @@ Lesson20: DOM操作
     // window オブジェクトの取得
     console.log('縦:' + window.outerHeight);
     console.log('横:' + window.outerWidth);
-    
+
     // 要素の取得
     var button = document.getElementById("button");
     button.value = 'クリックしたよ';
-    
+
     // 要素の作成
     var hello = document.createElement("p");
     var text  = document.createTextNode("スクープログラミング担当の岩田です");
